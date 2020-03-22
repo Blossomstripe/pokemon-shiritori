@@ -31,9 +31,6 @@ kw[473] = "ポリゴンゼット"
 # 処理2　拗音を処理、"ー"を除去
 d = {i: j for i, j in zip('ィャュョ', 'イヤユヨ')}
 kw = [''.join(d.get(c, c) for c in s.rstrip('ー')) for s in kw]
-with open('names.txt', 'w', encoding='UTF-8') as fo:
-    for i in range(poke_num - start_num):
-        fo.write(f"{kw[i]}\n")
 print("Data collected")
 
 n, r = len(kw), range(len(kw))
@@ -66,5 +63,5 @@ with open('longest_list.txt', 'w', encoding='UTF-8') as fo:
             print(' -> ', end='')
         i += 1
         print('[%d]%s' % (i, kw[s - 1]), end=' ')
-        s = vx[s - 1] @ rr
         fo.write(f'{pokemons[s - 1]}\n')
+        s = vx[s - 1] @ rr
